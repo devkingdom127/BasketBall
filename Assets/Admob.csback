@@ -1,0 +1,36 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Admob : MonoBehaviour {
+	public enum Screen {
+		MainMenu,
+		GamePlay,
+		Shop,
+		Loading
+	}
+	public Screen screen= Screen.Loading;
+	// Use this for initialization
+	void Start () {
+		GoolgeAdmob.RequestBanner();
+		GoolgeAdmob.RequestInterstitial();
+		if (screen== Screen.Loading){
+			if (GoolgeAdmob.bannerView!=null) GoolgeAdmob.bannerView.Show();
+		} else if (screen== Screen.GamePlay){
+			if (GoolgeAdmob.bannerView!=null) GoolgeAdmob.bannerView.Hide();
+			GoolgeAdmob.ShowInterstitial();
+		} else if (screen== Screen.MainMenu){
+			if (GoolgeAdmob.bannerView!=null) GoolgeAdmob.bannerView.Show();
+
+		} else if (screen== Screen.Shop){
+			if (GoolgeAdmob.bannerView!=null) GoolgeAdmob.bannerView.Show();
+		} 
+
+
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		
+	}
+}
